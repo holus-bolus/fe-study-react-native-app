@@ -3,18 +3,20 @@ import { useState } from "react";
 
 type GoalInputProps = {
   placeholder?: string;
-  addGoalHandler?: (enteredGoalText: string) => void;
   onAddGoal: (enteredGoalText: string) => void;
+  addGoalHandler: (enteredGoalText: string) => void;
 };
 
 const GoalInput = ({ placeholder, onAddGoal }: GoalInputProps) => {
   const [enteredGoalText, setEnteredGoalText] = useState("");
+
   const goalInputHandler = (enteredText: string) => {
     setEnteredGoalText(enteredText);
   };
 
   const addGoalHandler = () => {
     onAddGoal(enteredGoalText);
+    setEnteredGoalText("");
   };
 
   return (
