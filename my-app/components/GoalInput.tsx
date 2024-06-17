@@ -43,6 +43,7 @@ const GoalInput = ({
         <TextInput
           style={styles.textInput}
           placeholder={placeholder}
+          placeholderTextColor="#888888"
           onChangeText={goalInputHandler}
           value={enteredGoalText}
         />
@@ -70,12 +71,14 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     borderBottomColor: "#ccc",
     borderBottomWidth: 1,
+    backgroundColor: "#311b6b",
   },
   textInput: {
-    borderColor: "black",
+    borderColor: "#ffffff",
     borderWidth: 1,
     padding: 10,
     width: "100%",
+    color: "#ffffff",
   },
   buttonContainer: {
     flexDirection: "row",
