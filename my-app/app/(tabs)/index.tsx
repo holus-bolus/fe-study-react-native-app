@@ -12,11 +12,7 @@ export default function HomeScreen() {
   const [enteredGoalText, setEnteredGoalText] = useState("");
   const [courseGoals, setCourseGoals] = useState<Goal[]>([]);
 
-  const goalInputHandler = (enteredText: string) => {
-    setEnteredGoalText(enteredText);
-  };
-
-  const addGoalHandler = () => {
+  const addGoalHandler = (enteredGoalText: any) => {
     setCourseGoals((currentGoals) => [
       ...currentGoals,
       { id: Math.random().toString(36).substr(2, 9), text: enteredGoalText },
@@ -28,9 +24,8 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <GoalInput
         placeholder="Course Goal"
-        value={enteredGoalText}
-        onChangeText={goalInputHandler}
         addGoalHandler={addGoalHandler}
+        onAddGoal={addGoalHandler}
       />
       <View style={styles.goalsContainer}>
         <FlatList
