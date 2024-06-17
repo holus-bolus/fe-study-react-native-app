@@ -17,15 +17,18 @@ export default function HomeScreen() {
       ...currentGoals,
       { id: Math.random().toString(36).substr(2, 9), text: enteredGoalText },
     ]);
+    setModalIsVisible(false);
     setEnteredGoalText("");
   };
-
+  const endAddGoalHandler = () => {
+    setModalIsVisible(false);
+  };
   const startAddGoalHandler = () => {
     setModalIsVisible(true);
   };
 
   const deleteGoalHandler = (goalId: string) => {
-    console.log("deleted");
+    endAddGoalHandler();
     setCourseGoals((currentGoals) => {
       return currentGoals.filter((goal) => goal.id !== goalId);
     });
@@ -44,6 +47,7 @@ export default function HomeScreen() {
           addGoalHandler={addGoalHandler}
           visible={modalIsVisible}
           onAddGoal={addGoalHandler}
+          onCancel={endAddGoalHandler}
         />
       )}
       <View style={styles.goalsContainer}>

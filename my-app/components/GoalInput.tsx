@@ -1,4 +1,11 @@
-import { Button, TextInput, View, StyleSheet, Modal } from "react-native";
+import {
+  Button,
+  TextInput,
+  View,
+  StyleSheet,
+  Modal,
+  Image,
+} from "react-native";
 import { useState } from "react";
 
 type GoalInputProps = {
@@ -6,9 +13,15 @@ type GoalInputProps = {
   onAddGoal: (enteredGoalText: string) => void;
   addGoalHandler: (enteredGoalText: string) => void;
   visible: boolean;
+  onCancel: () => void;
 };
 
-const GoalInput = ({ placeholder, onAddGoal, visible }: GoalInputProps) => {
+const GoalInput = ({
+  placeholder,
+  onAddGoal,
+  visible,
+  onCancel,
+}: GoalInputProps) => {
   const [enteredGoalText, setEnteredGoalText] = useState("");
 
   const goalInputHandler = (enteredText: string) => {
@@ -23,6 +36,10 @@ const GoalInput = ({ placeholder, onAddGoal, visible }: GoalInputProps) => {
   return (
     <Modal animationType="slide" visible={visible}>
       <View style={styles.inputContainer}>
+        <Image
+          source={require("../assets/images/react-logo.png")}
+          style={{ alignSelf: "center" }}
+        />
         <TextInput
           style={styles.textInput}
           placeholder={placeholder}
@@ -34,7 +51,7 @@ const GoalInput = ({ placeholder, onAddGoal, visible }: GoalInputProps) => {
             <Button title="Add the goal" onPress={addGoalHandler} />
           </View>
           <View style={styles.button}>
-            <Button title="Cancel" color="red" />
+            <Button title="Cancel" color="red" onPress={onCancel} />
           </View>
         </View>
       </View>
